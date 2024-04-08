@@ -16,14 +16,19 @@ createApp({
                 
                 console.log(res.data);
                 
-                const email = res.data.response
+                const email = res.data.response;
                 emails.push(email);
-                })
+                if(i === this.numEmails ){
+                    this.email = {emails}
+                }
+
+            })
+
                 
             }
         }
     },
-    computed() {
-
+    mounted() {
+        this.generateRndEmails();
     }
 }).mount('#app');
