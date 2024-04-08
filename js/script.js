@@ -10,19 +10,25 @@ createApp({
     },
     methods: {
         generateRndEmails(){
-            const emails = [];
+
+            const listEmails = [];
+            
             for (let i = 0; i < this.numEmails; i++) {
-                axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((res)=>{
+                axios.get(this.apiPath).then((res)=>{
                 
                 console.log(res.data);
                 
-                const email = res.data.response;
-                emails.push(email);
-                if(i === this.numEmails ){
-                    this.email = {emails}
+                const newEmail = res.data.response;
+
+                listEmails.push(newEmail);
+                
+                console.log(listEmails);
+                
+                if(i === this.numEmails - 1){
+                    this.emails = {...listEmails}
                 }
 
-            })
+            });
 
                 
             }
